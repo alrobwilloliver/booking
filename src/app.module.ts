@@ -1,12 +1,18 @@
 import * as Joi from 'joi';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { BookingModule } from './booking/booking.module';
 import { StoreModule } from './store/store.module';
-
+import { JwtService } from '@nestjs/jwt';
+import { AuthService } from './auth/auth.service';
+import { UsersService } from './users/user.service';
+import { User } from './entity/user.entity';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { PassportModule } from '@nestjs/passport';
+import { UsersModule } from './users/user.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -20,10 +26,21 @@ import { StoreModule } from './store/store.module';
         PORT: Joi.number(),
       }),
     }),
+    TypeOrmModule.forFeature([User]),
+    UsersModule,
     BookingModule,
     StoreModule,
+    PassportModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    AuthService,
+    UsersService,
+    AppService,
+    AuthService,
+    ConfigService,
+    JwtService,
+  ],
 })
 export class AppModule {}
