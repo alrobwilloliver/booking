@@ -18,7 +18,7 @@ describe('BookingController', () => {
   });
 
   it('should return string of get booking', () => {
-    expect(controller.getBooking()).toBe('This action returns a booking');
+    expect(controller.getBookings()).toBe('This action returns a bookings');
   });
   it('should return returned confirmed booking', () => {
     expect(controller.confirmBooking()).toBe('updated booking is confirmed');

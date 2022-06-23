@@ -3,8 +3,8 @@ import { Controller, Get, Put } from '@nestjs/common';
 @Controller('booking')
 export class BookingController {
   @Get()
-  getBooking(): string {
-    return 'This action returns a booking';
+  getBookings(): string {
+    return 'This action returns a bookings';
   }
 
   @Put()
