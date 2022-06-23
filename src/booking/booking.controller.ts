@@ -1,9 +1,9 @@
 import { Controller, Get, Patch, UseGuards } from '@nestjs/common';
-import { JwtAuthGuard } from '../auth/jwt.auth.guard';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { BookingService } from './booking.service';
 import { updateDto } from './booking.interface';
 
-@Controller('booking')
+@Controller('bookings')
 export class BookingController {
   constructor(private readonly bookingService: BookingService) {}
 

@@ -13,6 +13,8 @@ import { User } from './entity/user.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { PassportModule } from '@nestjs/passport';
 import { UsersModule } from './users/user.module';
+import { JwtStrategy } from './auth/jwt.strategy';
+import { LocalStrategy } from './auth/local.strategy';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -41,6 +43,8 @@ import { UsersModule } from './users/user.module';
     AuthService,
     ConfigService,
     JwtService,
+    JwtStrategy,
+    LocalStrategy,
   ],
 })
 export class AppModule {}
