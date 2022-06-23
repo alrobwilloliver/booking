@@ -3,11 +3,12 @@ export interface Booking {
   title: string;
   startDate: string;
   endDate: string;
-  sitter: {
-    firstName: string;
-    lastName: string;
-  };
+  sitterName: string;
   confirmed: boolean;
+}
+
+export interface updateDto {
+  id: number;
 }
 
 export const bookings: Booking[] = [
@@ -16,10 +17,7 @@ export const bookings: Booking[] = [
     title: 'First Booking',
     startDate: '2021-09-10 15:30:00',
     endDate: '2021-09-10 19:30:00',
-    sitter: {
-      firstName: 'Mary',
-      lastName: 'Poppins',
-    },
+    sitterName: 'Mary',
     confirmed: false,
   },
   {
@@ -27,10 +25,7 @@ export const bookings: Booking[] = [
     title: 'Second Booking',
     startDate: '2021-10-10 15:30:00',
     endDate: '2021-10-10 19:30:00',
-    sitter: {
-      firstName: 'Developer',
-      lastName: 'Test',
-    },
+    sitterName: 'Dev',
     confirmed: false,
   },
   {
@@ -38,10 +33,7 @@ export const bookings: Booking[] = [
     title: 'Third Booking',
     startDate: '2021-11-10 15:30:00',
     endDate: '2021-11-10 19:30:00',
-    sitter: {
-      firstName: 'React',
-      lastName: 'Web',
-    },
+    sitterName: 'Test',
     confirmed: false,
   },
   {
@@ -49,10 +41,7 @@ export const bookings: Booking[] = [
     title: 'Fourth Booking',
     startDate: '2021-12-10 15:30:00',
     endDate: '2021-12-10 19:30:00',
-    sitter: {
-      firstName: 'Bubble',
-      lastName: 'Childcare',
-    },
+    sitterName: 'Alan',
     confirmed: false,
   },
 ];

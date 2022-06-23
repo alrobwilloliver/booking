@@ -1,18 +1,27 @@
 import { Injectable } from '@nestjs/common';
-import { Booking } from './booking.interface';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Booking } from '../entity/booking.entity';
+import { Repository } from 'typeorm';
 
-import { bookings } from './booking.interface';
-
+import { updateDto } from './booking.interface';
 @Injectable()
 export class BookingService {
-  private readonly booking: Booking[] = bookings;
+  constructor(
+    @InjectRepository(Booking)
+    private bookingRepository: Repository<Booking>,
+  ) {}
 
-  update(id: number): Booking {
-    const booking = this.booking[id];
-    return { ...booking, confirmed: true };
+  async update(booking: updateDto) {
+    const toUpdateBooking = await this.bookingRepository.findOneBy({
+      id: booking.id,
+    });
+    return this.bookingRepository.update(toUpdateBooking.id, {
+      ...toUpdateBooking,
+      confirmed: !toUpdateBooking.confirmed,
+    });
   }
 
-  findAll(): Booking[] {
-    return this.booking;
+  async findAll() {
+    return this.bookingRepository.find();
   }
 }
