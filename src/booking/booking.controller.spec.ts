@@ -35,11 +35,14 @@ describe('BookingController', () => {
 
   it('should return string of get booking', async () => {
     const result = await controller.getBookings();
-    expect(result).toBe(bookings);
+    expect(result.data).toStrictEqual(bookings);
+    expect(result.message).toBe('Bookings found');
+    expect(result.status).toBe(200);
   });
   it('should return returned confirmed booking', async () => {
     const result = await controller.confirmBooking({ id: 1 });
     expect(result).toBeDefined();
-    expect(result.affected == 1).toBe(true);
+    expect(result.message).toBe('Booking updated');
+    expect(result.status).toBe(200);
   });
 });

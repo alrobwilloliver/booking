@@ -1,7 +1,6 @@
-import { Controller, Get, Patch, UseGuards } from '@nestjs/common';
+import { Controller, Get, Patch, UseGuards, Param } from '@nestjs/common';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { BookingService } from './booking.service';
-import { updateDto } from './booking.interface';
 
 @Controller('bookings')
 export class BookingController {
@@ -15,7 +14,7 @@ export class BookingController {
 
   @UseGuards(JwtAuthGuard)
   @Patch(':id/confirm')
-  confirmBooking(booking: updateDto) {
-    return this.bookingService.update(booking);
+  confirmBooking(@Param() params) {
+    return this.bookingService.update(params);
   }
 }

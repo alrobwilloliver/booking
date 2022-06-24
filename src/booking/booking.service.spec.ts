@@ -32,12 +32,15 @@ describe('BookingService', () => {
   it('should return all bookings', async () => {
     const result = await service.findAll();
     expect(result).toBeDefined();
-    expect(result).toBe(bookings);
+    expect(result.data).toStrictEqual(bookings);
+    expect(result.message).toBe('Bookings found');
+    expect(result.status).toBe(200);
   });
 
   it('should return a confirmed booking', async () => {
     const res = await service.update(bookings[0]);
     expect(res).toBeDefined();
-    expect(res.affected == 1).toBe(true);
+    expect(res.status).toBe(200);
+    expect(res.message).toBe('Booking updated');
   });
 });

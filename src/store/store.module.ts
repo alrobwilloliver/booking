@@ -18,9 +18,6 @@ import { User } from '../entity/user.entity';
         password: configService.get('POSTGRES_PASSWORD'),
         database: configService.get('POSTGRES_DB'),
         entities: [Booking, User],
-        ssl: {
-          rejectUnauthorized: false,
-        },
         synchronize: true, //should be false at production!
       }),
     }),

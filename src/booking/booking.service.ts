@@ -15,13 +15,34 @@ export class BookingService {
     const toUpdateBooking = await this.bookingRepository.findOneBy({
       id: booking.id,
     });
-    return this.bookingRepository.update(toUpdateBooking.id, {
+    const res = await this.bookingRepository.update(toUpdateBooking.id, {
       ...toUpdateBooking,
       confirmed: !toUpdateBooking.confirmed,
     });
+    if (res.affected === 1) {
+      return {
+        status: 200,
+        message: 'Booking updated',
+      };
+    }
+    return {
+      status: 400,
+      message: 'Booking not updated',
+    };
   }
 
   async findAll() {
-    return this.bookingRepository.find();
+    const res = await this.bookingRepository.find();
+    if (!res) {
+      return {
+        status: 400,
+        message: 'Bookings not found',
+      };
+    }
+    return {
+      status: 200,
+      message: 'Bookings found',
+      data: res,
+    };
   }
 }
