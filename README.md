@@ -1,3 +1,11 @@
+# Quickstart
+
+```bash
+docker-compose up -d
+yarn start
+yarn seed
+```
+
 # Bubble - Back End Engineer Technical Assessement
 
 _This code is the property of Bubble. It cannot be shared or made public._

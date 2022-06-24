@@ -3,6 +3,7 @@ services:
   db:
     image: postgres:14.1-alpine
     restart: always
+    container_name: booking-postgresql
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
@@ -10,6 +11,7 @@ services:
       - '5432:5432'
     volumes: 
       - db:/var/lib/postgresql/data
+      - ./src/data/seed.sql:/data/seed.sql
 volumes:
   db:
     driver: local
