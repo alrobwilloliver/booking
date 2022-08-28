@@ -15,7 +15,7 @@ export class Booking {
   endDate: string;
 
   @Column()
-  sitterName: string;
+  name: string;
 
   @Column()
   confirmed: boolean;

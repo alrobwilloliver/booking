@@ -3,7 +3,7 @@ export interface Booking {
   title: string;
   startDate: string;
   endDate: string;
-  sitterName: string;
+  name: string;
   confirmed: boolean;
 }
 
@@ -17,7 +17,7 @@ export const bookings: Booking[] = [
     title: 'First Booking',
     startDate: '2021-09-10 15:30:00',
     endDate: '2021-09-10 19:30:00',
-    sitterName: 'Mary',
+    name: 'Mary',
     confirmed: false,
   },
   {
@@ -25,7 +25,7 @@ export const bookings: Booking[] = [
     title: 'Second Booking',
     startDate: '2021-10-10 15:30:00',
     endDate: '2021-10-10 19:30:00',
-    sitterName: 'Dev',
+    name: 'Dev',
     confirmed: false,
   },
   {
@@ -33,7 +33,7 @@ export const bookings: Booking[] = [
     title: 'Third Booking',
     startDate: '2021-11-10 15:30:00',
     endDate: '2021-11-10 19:30:00',
-    sitterName: 'Test',
+    name: 'Test',
     confirmed: false,
   },
   {
@@ -41,7 +41,7 @@ export const bookings: Booking[] = [
     title: 'Fourth Booking',
     startDate: '2021-12-10 15:30:00',
     endDate: '2021-12-10 19:30:00',
-    sitterName: 'Alan',
+    name: 'Alan',
     confirmed: false,
   },
 ];

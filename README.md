@@ -6,46 +6,36 @@ yarn start
 yarn seed
 ```
 
-# Bubble - Back End Engineer Technical Assessement
-
-_This code is the property of Bubble. It cannot be shared or made public._
-
 ## Overview
 
-The goal of this test is to create an API which:
+This API:
 
 - Authenticates a user
 - List their bookings
 - Allow them to confirm their bookings
 
-You can use any web server or framework.
-You can store data in a file, in memory or in a DB (using docker).
-
-All endpoints must return a response in JSON format.
-
-**Estimated duration**: 1 hour 30 min
+All endpoints return a response in JSON format.
 
 ## API information
 
-The full api description is detailed in `api-definition.yaml`
-
-The bookings dataset is available `src/data` (written in typescript)
+The bookings dataset is available `src/data`
 
 User credentials are:
 
 ```
-Login: bubble
-Password: be-test
+Login: booking-profile
+Password: booking-test
 ```
 
-## Acceptance criteria
+NOTE: you must have curl and jq installed to run these commands.
+```
+BEARER_TOKEN=$(curl -X POST -H "content-type: application/json" -d '{"username": "booking-profile", "password": "booking-test"}' http://localhost:3000/auth/login | jq -r '.access_token')
+curl -H "Authorization: Bearer $BEARER_TOKEN" http://localhost:3000/bookings
+curl -X PATCH -H "Authorization: Bearer $BEARER_TOKEN" http://localhost:3000/bookings/1/confirm
+```
 
-As a user,
+## Test
 
-When I authenticate,
-
-I can access my list of bookings
-
-And, when I confirm a booking
-
-Then I can see it as **confirmed** when I revisit the list of bookings
+```
+yarn test
+```
